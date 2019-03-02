@@ -18,6 +18,31 @@ class ViewController: UIViewController {
         
     }()
     
+    var pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.pageIndicatorTintColor = UIColor(white: 0.2, alpha: 1.0)
+        pc.numberOfPages = 3
+        pc.translatesAutoresizingMaskIntoConstraints = false
+        pc.currentPageIndicatorTintColor = UIColor.orange
+        return pc
+    }()
+    
+    let btnSkip : UIButton = {
+        let btnSkip = UIButton()
+        btnSkip.setTitleColor(UIColor.orange, for: UIControl.State.normal)
+        btnSkip.setTitle("Skip", for: UIControl.State.normal)
+        btnSkip.translatesAutoresizingMaskIntoConstraints = false
+        return btnSkip
+    }()
+    
+    let btnNext : UIButton = {
+        let btnNext = UIButton()
+        btnNext.setTitleColor(UIColor.orange, for: UIControl.State.normal)
+        btnNext.setTitle("Next", for: UIControl.State.normal)
+        btnNext.translatesAutoresizingMaskIntoConstraints = false
+        return btnNext
+    }()
+    
     var pages: [Page] = {
         var pages = [Page]()
         let firstPage = Page(title: "Share a great listen", message: "It's free to send your books to the people in your life. Every recipient's first book is on us.", imageName: "image_cvLogin")
@@ -48,6 +73,9 @@ class ViewController: UIViewController {
     func setupViews(){
         view.addSubview(cv)
         cv.register(loginCollectionCell.self, forCellWithReuseIdentifier: cellId)
+        view.addSubview(pageControl)
+        view.addSubview(btnSkip)
+        view.addSubview(btnNext)
     }
     
     func addingConstraints(){
@@ -56,6 +84,21 @@ class ViewController: UIViewController {
         cv.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         cv.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         cv.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        pageControl.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        pageControl.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        pageControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        btnSkip.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        btnSkip.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        btnSkip.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        btnNext.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        btnNext.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        btnNext.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        btnNext.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
 
